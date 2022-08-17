@@ -8,6 +8,5 @@ public class Initializer {
 
         new HomeView();
 
-        /*javax.swing.SwingUtilities.invokeLater(App::new);*/
     }
 }
