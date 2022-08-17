@@ -1,14 +1,15 @@
 package com.park.model;
 
 public class Carro {
+	
+	private String placa;
 
     public Carro() {}
 
     public Carro(final String placa) {
         this.placa = placa;
     }
-    private String placa;
-
+   
     public String getPlaca() {
         return placa;
     }

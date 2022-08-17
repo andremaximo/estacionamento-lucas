@@ -1,4 +1,6 @@
-package com.park.view;
+package com.park;
+
+import com.park.view.HomeView;
 
 public class Initializer {
 
