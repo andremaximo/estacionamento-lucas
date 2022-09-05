@@ -33,7 +33,7 @@ public class ParkService implements IParkService {
 	@Override
 	public int getQtdVagasOcupadas() {
 
-		for (int i = 0; i < carros.size(); i++);
+
 
 		int tamanho = this.carros.size();
 
@@ -70,15 +70,15 @@ public class ParkService implements IParkService {
 			System.out.println("CARRO JA SE ENCONTRA NO ESTACIONAMENTO");
 			JOptionPane.showMessageDialog(null, "CARRO JA SE ENCONTRA NO ESTACIONAMENTO", "Alerta", JOptionPane.ERROR_MESSAGE);
 		
-		}else {
-		if (qtdVagas == getQtdVagasOcupadas()) {
-			System.out.println("ESTACIONAMENTO LOTADO");
-			JOptionPane.showMessageDialog(null, "ESTACIONAMENTO LOTADO", "Alerta", JOptionPane.ERROR_MESSAGE );
-		} else {
-
-			carros.add(placa);
-			System.out.println("O Carro de " + placa + " foi adicionado.");
-		}
+		}else{
+			if (qtdVagas == getQtdVagasOcupadas()) {
+				System.out.println("ESTACIONAMENTO LOTADO");
+				JOptionPane.showMessageDialog(null, "ESTACIONAMENTO LOTADO", "Alerta", JOptionPane.ERROR_MESSAGE );
+			}else{
+	
+				carros.add(placa);
+				System.out.println("O Carro de " + placa + " foi adicionado.");
+			}
 		}
 
 		System.out.println(carros);
@@ -100,7 +100,7 @@ public class ParkService implements IParkService {
 	@Override
 	public int encontraCarro(final String placa) {
 
-		carros.indexOf(placa);
+		
 //		System.out.println(carros.indexOf(placa));
 
 		return carros.indexOf(placa) + 1;
