@@ -1,52 +1,56 @@
 package com.park.controller;
 
 import com.park.model.IParkService;
+import com.park.model.ParkService;
 
 public class ParkController implements IParkController{
 
-    private final IParkService parkService = null;
-    int qtdVagas = 0;
+    private IParkService parkService = null;
+    
+    
+    public ParkController() {
+    	
+    	 parkService = new ParkService();
+    }
 
     @Override
     public void iniciaEstacionamento(final String numeroVagas) {
-        qtdVagas = Integer.parseInt(numeroVagas);
-        System.out.println(String.format("Estacionamento com %s vagas criado.", numeroVagas));
-        /*parkService.iniciaEstacionamento(numeroVagas);*/
+//    	qtdVagas = Integer.parseInt(numeroVagas);
+    	
+//    
+        parkService.iniciaEstacionamento(numeroVagas);
+                
     }
 
     @Override
     public int getQtdVagasOcupadas() {
-        return 1;
-        /*return parkService.getQtdVagasOcupadas();*/
+    	return parkService.getQtdVagasOcupadas();
     }
 
     @Override
     public int getQtdVagasDisponiveis() {
-        return 2;
-        /*return getQtdVagasDisponiveis();*/
+        return parkService.getQtdVagasDisponiveis();
     }
 
     @Override
     public int getQtdVagas() {
-        return qtdVagas;
-        /*return getQtdVagas();*/
+        return parkService.getQtdVagas();
     }
 
     @Override
     public void addCarro(final String placa) {
-        System.out.println(String.format("Carro %s adicionado.", placa));
-        /*parkService.addCarro(placa);*/
+//        System.out.println(String.format("Carro %s adicionado.", placa));
+        parkService.addCarro(placa);
     }
 
     @Override
     public void removeCarro(final String placa) {
-        System.out.println(String.format("Carro %s removido.", placa));
-        /*parkService.removeCarro(placa);*/
+//        System.out.println(String.format("Carro %s removido.", placa));
+        parkService.removeCarro(placa);
     }
 
     @Override
     public int encontraCarro(final String placa) {
-        return 6;
-        /*return encontraCarro(placa);*/
+        return parkService.encontraCarro(placa);
     }
 }

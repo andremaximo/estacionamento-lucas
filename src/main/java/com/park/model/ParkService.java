@@ -1,39 +1,108 @@
 package com.park.model;
 
-public class ParkService implements IParkService{
+import java.util.ArrayList;
+import java.util.List;
 
-    @Override
-    public void iniciaEstacionamento(final String numeroVagas) {
+import javax.swing.JOptionPane;
 
-    }
+import com.park.controller.ParkController;
 
-    @Override
-    public int getQtdVagasOcupadas() {
-        return 0;
-    }
+public class ParkService implements IParkService {
 
-    @Override
-    public int getQtdVagasDisponiveis() {
-        return 0;
-    }
+	int qtdVagas;
 
-    @Override
-    public int getQtdVagas() {
-        return 0;
-    }
+	List<String> carros;
 
-    @Override
-    public void addCarro(final String placa) {
+	int vagasDisp;
 
-    }
+	public ParkService() {
 
-    @Override
-    public void removeCarro(final String placa) {
+		carros = new ArrayList();
 
-    }
+		qtdVagas = 0;
 
-    @Override
-    public int encontraCarro(final String placa) {
-        return 0;
-    }
+	}
+
+	@Override
+	public void iniciaEstacionamento(final String numeroVagas) {
+
+		System.out.println(String.format("Estacionamento com %s vagas criado.", numeroVagas));
+		qtdVagas = Integer.parseInt(numeroVagas);
+	}
+
+	@Override
+	public int getQtdVagasOcupadas() {
+
+		for (int i = 0; i < carros.size(); i++);
+
+		int tamanho = this.carros.size();
+
+		return tamanho;
+
+	}
+
+	@Override
+	public int getQtdVagasDisponiveis() {
+
+		if (getQtdVagasOcupadas() >= 1) {
+			vagasDisp = qtdVagas - getQtdVagasOcupadas();
+			
+			return vagasDisp;
+		} else {
+			return qtdVagas;
+		}
+
+	}
+
+	@Override
+	public int getQtdVagas() {
+		return qtdVagas;
+	}
+
+	@Override
+	public void addCarro(final String placa) {
+
+		
+		boolean contem = carros.contains(placa);
+		System.out.println(contem);
+		
+		if(contem) {
+			System.out.println("CARRO JA SE ENCONTRA NO ESTACIONAMENTO");
+			JOptionPane.showMessageDialog(null, "CARRO JA SE ENCONTRA NO ESTACIONAMENTO", "Alerta", JOptionPane.ERROR_MESSAGE);
+		
+		}else {
+		if (qtdVagas == getQtdVagasOcupadas()) {
+			System.out.println("ESTACIONAMENTO LOTADO");
+			JOptionPane.showMessageDialog(null, "ESTACIONAMENTO LOTADO", "Alerta", JOptionPane.ERROR_MESSAGE );
+		} else {
+
+			carros.add(placa);
+			System.out.println("O Carro de " + placa + " foi adicionado.");
+		}
+		}
+
+		System.out.println(carros);
+
+//		System.out.println("vagas ocupadas " + tamanho);
+
+	}
+
+	@Override
+	public void removeCarro(final String placa) {
+
+		carros.remove(placa);
+
+		System.out.println(carros);
+
+//		System.out.println("vagas ocupadas " + carros.size());
+	}
+
+	@Override
+	public int encontraCarro(final String placa) {
+
+		carros.indexOf(placa);
+//		System.out.println(carros.indexOf(placa));
+
+		return carros.indexOf(placa) + 1;
+	}
 }
